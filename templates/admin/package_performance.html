@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package Performance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ukoo-net Admin</h2>
+        <ul>
+            <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('admin_users') }}">Users</a></li>
+            <li><a href="{{ url_for('admin_packages') }}">Packages</a></li>
+            <li><a href="{{ url_for('admin_payments') }}">Payments</a></li>
+            <li><a href="{{ url_for('package_performance') }}">Performance</a></li>
+            <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>📊 Package Performance Comparison</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Package Name</th>
+                    <th>Price (KES)</th>
+                    <th>Active Users</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pkg in data %}
+                <tr>
+                    <td><strong>{{ pkg.name }}</strong></td>
+                    <td>KSH {{ "{:,.2f}".format(pkg.amount) }}</td>
+                    <td><span class="badge">{{ pkg.active_users }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
