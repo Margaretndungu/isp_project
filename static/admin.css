@@ -1,0 +1,359 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    display: flex;
+    background-color: #f9fafb;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    color: #ffffff;
+    padding: 30px 20px;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    color: #38bdf8;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #334155;
+    color: #ffffff;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 40px;
+    width: 100%;
+}
+
+/* Header */
+.dashboard-header h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #0f172a;
+}
+
+/* Stats Cards */
+.stats-section {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    flex: 1;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 20px;
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 22px;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+/* Tables Section */
+.tables-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Table Container */
+.table-box {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    min-width: 300px;
+}
+
+.table-box h3 {
+    font-size: 18px;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Admin Packages Table Section */
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #2563eb;
+}
+
+/* Action Buttons */
+.action-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #0ea5e9;
+}
+
+.edit-btn:hover {
+    background-color: #0284c7;
+}
+
+.delete-btn {
+    background-color: #ef4444;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 15px 20px;
+    }
+
+    .sidebar h2 {
+        font-size: 18px;
+        margin-bottom: 0;
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .sidebar ul {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 0;
+        margin-top: 10px;
+    }
+
+    .sidebar ul li {
+        margin: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .stats-section,
+    .tables-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .stat-card,
+    .table-box {
+        width: 100%;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .top-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .add-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .action-btns {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 100%;
+    }
+}
+/* Hamburger Button */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background-color: #1e293b;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Mobile Sidebar Toggle */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+        position: fixed;
+        width: 250px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: #1e293b;
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar-show {
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+}
+.badge {
+    background-color: orange;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding-right: 40px; /* Space for the eye icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+
+

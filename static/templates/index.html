@@ -1,0 +1,44 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ukoo-net - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">ukoo-net</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{{ url_for('packages') }}" class="btn">View Packages</a></li>
+            <li><a href="{{ url_for('login') }}" class="btn">Login</a></li>
+            <li><a href="{{ url_for('register') }}" class="btn">Register</a></li
+        </ul>
+    </nav>
+
+<header class="hero">
+    <div class="hero-text-box">
+        <h1>Welcome to <span class="brand-name">ukoo-net</span></h1>
+        <p>We believe the internet is more than speed — it's about connection, opportunity, and community.</p>
+        <p>Whether you're streaming, studying, working, or connecting with loved ones, ukoo-net keeps you online without interruptions.</p>
+        <a href="{{ url_for('packages') }}" class="btn">View Our Packages</a>
+    </div>
+    <div class="hero-image-container">
+        <img src="{{ url_for('static', filename='ukoo.png') }}" alt="Ukoo-net Internet" class="hero-image">
+    </div>
+</header>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

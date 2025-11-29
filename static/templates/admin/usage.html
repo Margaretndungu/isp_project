@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PPPoE Usage - Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h2>Active PPPoE Users</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% if users %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Username</th>
+                <th>IP Address</th>
+                <th>MAC Address</th>
+                <th>Uptime</th>
+                <th>Action</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user['caller-id'] }}</td>
+                <td>{{ user.uptime }}</td>
+                <td>
+                    <form action="{{ url_for('disconnect_pppoe_user', name=user.name) }}" method="post">
+                        <button type="submit" onclick="return confirm('Disconnect this user?');">Disconnect</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No active PPPoE users at the moment.</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a></p>
+</body>
+</html>

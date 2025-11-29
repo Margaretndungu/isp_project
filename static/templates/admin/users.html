@@ -1,0 +1,43 @@
+<!-- templates/admin/users.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ukoo-net Admin</h2>
+        <ul>
+            <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('admin_users') }}">Users</a></li>
+            <li><a href="{{ url_for('admin_packages') }}">Packages</a></li>
+            <li><a href="{{ url_for('admin_payments') }}">Payments</a></li>
+            <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Registered Users</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.phone }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

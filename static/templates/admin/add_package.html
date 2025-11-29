@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Package - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="sidebar">
+    <div>
+        <h2>ukoo-net Admin</h2>
+        <ul>
+            <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('admin_packages') }}">Back to Packages</a></li>
+            <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="dashboard-header">
+        <h1>Add New Internet Package</h1>
+    </div>
+
+    <form method="POST" class="form-box">
+        <label for="name">Package Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="amount">Amount (KSh):</label>
+        <input type="number" id="amount" name="amount" required>
+
+        <button type="submit" class="submit-btn">Add Package</button>
+    </form>
+</div>
+
+</body>
+</html>

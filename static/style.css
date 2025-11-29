@@ -1,0 +1,314 @@
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+     background: linear-gradient(to bottom right, #2d7cc5, #3498db); /* Brighter blues */
+    color: #e0e6ed;
+    text-align: center;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #11152f;
+    padding: 15px 20px;
+    color: white;
+}
+
+.brand {
+    font-size: 26px;
+    font-weight: bold;
+    color: #50E3C2;
+}
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-icon span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    display: block;
+    border-radius: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: #e0e6ed;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 10%;
+    background: #2980b9; 
+    flex-wrap: wrap;
+}
+
+.hero-text-box {
+    flex: 1;
+    max-width: 550px;
+    background: rgba(18, 22, 57, 0.85);
+    padding: 30px;
+    border-radius: 10px;
+    color: #e0e6ed;
+    animation: fadeIn 1s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+
+.hero-text-box h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #50E3C2;
+}
+
+.hero-text-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #dbe7f2;
+    margin-bottom: 15px;
+}
+
+.brand-name {
+    color: #50E3C2;
+    font-weight: bold;
+}
+
+
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Buttons */
+.btn, .buy-now-button {
+    background-color: #ffffff;
+    color: #2471A3;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover, .buy-now-button:hover {
+    background-color: #C02D40;
+    transform: translateY(-2px);
+}
+/* Password Toggle Style */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+}
+
+
+/* Form Section */
+.form-section {
+    max-width: 450px;
+    margin: 50px auto;
+    background: #2c3e60;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    color: #5CB4DD;
+}
+
+form input, form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+form input {
+    background: #f0f4f8;
+    color: #1c1c1c;
+}
+
+form input:focus {
+    outline: none;
+    background-color: #e9f3fb;
+    box-shadow: 0 0 5px #5CB4DD;
+}
+
+form button {
+    background: #E0364C;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #C02D40;
+}
+
+/* Packages */
+.package-group {
+    margin-bottom: 40px;
+}
+
+.package-group h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #A04CD9;
+}
+
+.package {
+    background: #2c3e60;
+    color: #e0e6ed;
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.package h3 {
+    margin: 0 0 10px;
+}
+
+/* Utility Colors */
+.color-red { color: #E0364C; }
+.bg-red { background-color: #E0364C; }
+
+.color-green { color: #50E3C2; }
+.bg-green { background-color: #50E3C2; }
+
+.color-light-blue { color: #5CB4DD; }
+.bg-light-blue { background-color: #5CB4DD; }
+
+.color-purple { color: #A04CD9; }
+.bg-purple { background-color: #A04CD9; }
+
+.color-brown { color: #6B3F24; }
+.bg-brown { background-color: #6B3F24; }
+
+.color-orange { color: #FF8C00; }
+.bg-orange { background-color: #FF8C00; }
+
+.color-dark-teal { color: #2E8B57; }
+.bg-dark-teal { background-color: #2E8B57; }
+
+.color-dark-blue { color: #1E537A; }
+.bg-dark-blue { background-color: #1E537A; }
+
+/* Links like "Forgot Password" */
+.form-section a {
+    color: #5CB4DD;
+    text-decoration: underline;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.form-section a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #2471A3;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 5%;
+    }
+
+    .hero-text-box {
+        text-align: center;
+    }
+
+    .hero-text, .hero-image-container {
+        flex: 1 1 100%;
+    }
+}
+.flash-messages {
+    list-style: none;
+    margin: 10px auto;
+    max-width: 600px;
+    padding: 10px;
+}
+.flash-messages li.success {
+    background-color: #d1fae5;
+    border-left: 6px solid #10b981;
+    color: #065f46;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+

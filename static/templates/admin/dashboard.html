@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - ukoo-net</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Hamburger Toggle -->
+<div class="hamburger" onclick="toggleSidebar()">☰</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="adminSidebar">
+    <div>
+        <h2>ukoo-net Admin</h2>
+        <ul>
+            <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('admin_users') }}">Users</a></li>
+            <li><a href="{{ url_for('admin_packages') }}">Packages</a></li>
+            <li><a href="{{ url_for('admin_payments') }}">Payments</a></li>
+            <li><a href="{{ url_for('admin_usage') }}">PPPoE Usage</a></li>
+            <li><a href="{{ url_for('package_performance') }}">Performance</a></li>
+			<li><a href="{{ url_for('admin_change_credentials') }}">Change Credentials</a></li>
+            <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="dashboard-header">
+        <h1>Admin Dashboard</h1>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+        <div class="stat-card">
+            <h3>Total Users</h3>
+            <p>{{ user_count }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Payments</h3>
+            <p>KSh {{ total_payments }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Active PPPoE Users</h3>
+            <p>{{ pppoe_count }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Retention (6 Months)</h3>
+            <p>{{ retention_rate }}%</p>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="chart-section">
+        <div class="chart-box">
+            <h3>Payments Per Day (Last 7 Days)</h3>
+            <canvas id="dailyChart" height="100"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3>Payments Per Month (Last 6 Months)</h3>
+            <canvas id="monthlyChart" height="100"></canvas>
+        </div>
+    </div>
+
+    <!-- Tables -->
+    <div class="tables-section">
+        <div class="table-box">
+            <h3>Recent Users</h3>
+            <table>
+                <thead><tr><th>Name</th><th>Phone</th></tr></thead>
+                <tbody>
+                    {% for user in recent_users %}
+                    <tr><td>{{ user.name }}</td><td>{{ user.phone }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-box">
+            <h3>Recent Payments</h3>
+            <table>
+                <thead><tr><th>Phone</th><th>Amount</th><th>Package</th></tr></thead>
+                <tbody>
+                    {% for payment in recent_payments %}
+                    <tr>
+                        <td>{{ payment.phone }}</td>
+                        <td>{{ payment.amount }}</td>
+                        <td>{{ payment.package }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+    new Chart(dailyCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ daily_labels | tojson }},
+            datasets: [{
+                label: 'KES',
+                data: {{ daily_data | tojson }},
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: { responsive: true }
+    });
+
+    const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+    new Chart(monthlyCtx, {
+        type: 'line',
+        data: {
+            labels: {{ monthly_labels | tojson }},
+            datasets: [{
+                label: 'KES',
+                data: {{ monthly_data | tojson }},
+                backgroundColor: 'rgba(255, 206, 86, 0.4)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: { responsive: true }
+    });
+
+    function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('sidebar-show');
+    }
+</script>
+
+</body>
+</html>
